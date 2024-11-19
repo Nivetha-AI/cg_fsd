@@ -1,4 +1,4 @@
-// Defining bakery items with image URLs
+
 const bakeryItems = [
     { 
         name: "Chocolate Cake", 
@@ -32,7 +32,7 @@ const bakeryItems = [
     },
 ];
 
-// Display bakery items on the product listing page
+
 window.onload = function () {
   const productListDiv = document.getElementById("product-list");
 
@@ -52,32 +52,28 @@ window.onload = function () {
   });
 };
 
-// Function to add item to cart
 function addToCart(index) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   const selectedItem = bakeryItems[index];
 
-  // Check if the item is already in the cart
   const existingItemIndex = cart.findIndex(item => item.name === selectedItem.name);
 
   if (existingItemIndex !== -1) {
-    // If item exists, increase the quantity
     cart[existingItemIndex].quantity += 1;
   } else {
-    // If item does not exist, add it with quantity = 1
     selectedItem.quantity = 1;
     cart.push(selectedItem);
   }
 
-  // Save the updated cart to localStorage
+
   localStorage.setItem('cart', JSON.stringify(cart));
 
-  // Redirect to cart page
+  
   window.location.href = "cart.html";
 }
 
-// Display cart contents on cart page
+
 if (window.location.href.includes('cart.html')) {
   const cartItemsDiv = document.getElementById("cart-items");
   const totalPriceSpan = document.getElementById("total-price");
@@ -110,11 +106,10 @@ if (window.location.href.includes('cart.html')) {
   }
 }
 
-// Function to clear the cart
 function clearCart() {
-  // Remove cart data from localStorage
+  
   localStorage.removeItem('cart');
 
-  // Reload the page or redirect to the product listing page
-  location.reload();  // This will just reload the cart page
+ 
+  location.reload();  
 }

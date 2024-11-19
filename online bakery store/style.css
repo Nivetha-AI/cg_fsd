@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -42,15 +42,15 @@ button:hover {
     background-color: #e6b800;
 }
 
-/* Style for product images */
+
 .product-card img.product-image {
     width: 100%;
     height: auto;
-    max-width: 200px; /* Adjust the maximum width */
+    max-width: 200px; 
     margin-bottom: 10px;
 }
 
-/* Cart Styles */
+
 #cart-items {
     padding: 20px;
 }
