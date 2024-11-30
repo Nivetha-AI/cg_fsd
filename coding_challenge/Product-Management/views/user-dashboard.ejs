@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body, h1, h2, h3, p, form, div, ul, li, a, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #111868;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        #user-dashboard {
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            width: 30%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button[type="submit"] {
+            background-color: #111868;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #product-results {
+            margin-top: 30px;
+        }
+
+        #product-results ul {
+            list-style-type: none;
+        }
+
+        #product-results li {
+            padding: 10px;
+            background-color: white;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        #product-results li strong {
+            font-size: 1.2rem;
+        }
+
+        .logout-btn {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .logout-btn a {
+            text-decoration: none;
+        }
+
+        .logout-btn button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .logout-btn button:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to the User Dashboard</h1>
+    </header>
+
+    <section id="user-dashboard">
+        <h2>Search Products</h2>
+
+        <form action="/user/search" method="POST">
+            <div class="search-container">
+                <div class="search-box">
+                    <label for="searchByName">Search by Product Name:</label>
+                    <input type="text" id="searchByName" name="searchByName" placeholder="Enter product name">
+                </div>
+                <div class="search-box">
+                    <label for="searchByCategory">Search by Category:</label>
+                    <input type="text" id="searchByCategory" name="searchByCategory" placeholder="Enter product category">
+                </div>
+                <button type="submit">Search</button>
+            </div>
+        </form>
+
+        <div id="product-results">
+            <h3>Search Results:</h3>
+            <ul>
+                <% products.forEach(function(product) { %>
+                    <li>
+                        <strong><%= product.name %></strong><br>
+                        Category: <%= product.category %><br>
+                        Price: $<%= product.price %><br>
+                        Manufacturing Date: <%= product.manufacture_date %><br>
+                        Expiration Date: <%= product.expiration_date %><br>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+    </section>
+
+    <div class="logout-btn">
+        <a href="/logout"><button>Logout</button></a>
+    </div>
+</body>
+</html>

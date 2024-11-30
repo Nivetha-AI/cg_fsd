@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 50%;
+            max-width: 1200px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 200px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #555;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            padding: 5px;
+            font-size: 16px;
+            background-color: #111868;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #3c3754;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+        }
+
+        ul li strong {
+            font-weight: bold;
+        }
+
+        ul li span {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .logout-btn {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .logout-btn a {
+            text-decoration: none;
+        }
+
+        .logout-btn button {
+            padding: 12px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn button:hover {
+            background-color: #e04343;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+
+
+        <h2>Register New Product</h2>
+        <br>
+        <form action="/admin/register-product" method="POST">
+            <div>
+                <label for="name">Product Name</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div>
+                <label for="category">Category</label>
+                <input type="text" name="category" id="category" required>
+            </div>
+            <div>
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price" required>
+            </div>
+            <div>
+                <label for="manufacture_date">Manufacturing Date</label>
+                <input type="date" name="manufacture_date" id="manufacture_date" required>
+            </div>
+            <div>
+                <label for="expiration_date">Expiration Date</label>
+                <input type="date" name="expiration_date" id="expiration_date" required>
+            </div>
+            <button type="submit">Register Product</button>
+        </form>
+
+        <h2>Product List</h2>
+        <br>
+        <ul>
+            <% products.forEach(product=> { %>
+                <li>
+                    <strong>
+                        <%= product.name %>
+                    </strong> - <%= product.category %> - $<%= product.price %>
+                            - Manufactured: <%= product.manufacture_date %> - Expiration: <%= product.expiration_date %>
+                </li>
+                <% }) %>
+        </ul>
+
+        <div class="logout-btn">
+            <a href="/logout"><button>Logout</button></a>
+        </div>
+    </div>
+</body>
+
+</html>
